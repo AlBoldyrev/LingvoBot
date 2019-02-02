@@ -7,8 +7,10 @@ import lombok.Data;
 public class ModelMessageNew {
 
     String type;
+
     @SerializedName("object")
     Info info;
+
     int group_id;
 
     public Info getInfo() {

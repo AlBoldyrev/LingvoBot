@@ -12,7 +12,7 @@ public class Info {
     int id;
     int out;
     int peer_id;
-    int text;
+    String text;
     int conversation_message_id;
     List<Message> messages;
     boolean important;

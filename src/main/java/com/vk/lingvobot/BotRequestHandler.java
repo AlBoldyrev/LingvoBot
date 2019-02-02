@@ -61,7 +61,7 @@ public class BotRequestHandler {
                     System.out.println("jsonType: " + type + "  " + jsonObject);
 
                     //Pattern here should be used
-                    
+
                     if (type.equals("message_new")) {
                         GsonBuilder builder = new GsonBuilder();
                         Gson gson = builder.create();
