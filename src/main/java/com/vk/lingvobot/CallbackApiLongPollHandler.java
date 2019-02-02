@@ -1,6 +1,6 @@
-import com.google.gson.JsonObject;
+package com.vk.lingvobot;
+
 import com.vk.api.sdk.callback.longpoll.CallbackApiLongPoll;
-import com.vk.api.sdk.callback.longpoll.responses.GetLongPollEventsResponse;
 import com.vk.api.sdk.callback.objects.board.CallbackBoardPostDelete;
 import com.vk.api.sdk.callback.objects.group.CallbackGroupChangePhoto;
 import com.vk.api.sdk.callback.objects.group.CallbackGroupChangeSettings;
@@ -23,12 +23,8 @@ import com.vk.api.sdk.callback.objects.wall.CallbackWallCommentDelete;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.exceptions.ApiException;
-import com.vk.api.sdk.exceptions.ClientException;
-import com.vk.api.sdk.exceptions.LongPollServerKeyExpiredException;
 import com.vk.api.sdk.objects.audio.Audio;
 import com.vk.api.sdk.objects.board.TopicComment;
-import com.vk.api.sdk.objects.groups.responses.GetLongPollServerResponse;
 import com.vk.api.sdk.objects.messages.Message;
 import com.vk.api.sdk.objects.photos.Photo;
 import com.vk.api.sdk.objects.video.Video;

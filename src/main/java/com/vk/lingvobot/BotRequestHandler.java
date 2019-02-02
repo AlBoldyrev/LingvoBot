@@ -1,3 +1,8 @@
+package com.vk.lingvobot;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.vk.api.sdk.callback.longpoll.responses.GetLongPollEventsResponse;
 import com.vk.api.sdk.client.VkApiClient;
@@ -7,6 +12,8 @@ import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.exceptions.LongPollServerKeyExpiredException;
 import com.vk.api.sdk.objects.groups.responses.GetLongPollServerResponse;
+import com.vk.model.message_new.ModelMessageNew;
+import com.vk.model.message_new.Info;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,7 +57,26 @@ public class BotRequestHandler {
             try {
                 GetLongPollEventsResponse eventsResponse = apiClient.longPoll().getEvents(longPollServer.getServer(), longPollServer.getKey(), lastTimeStamp).waitTime(waitTime).execute();
                 for (JsonObject jsonObject: eventsResponse.getUpdates()) {
-                    System.out.println("message");
+                    String type = jsonObject.get("type").getAsString();
+                    System.out.println("jsonType: " + type + "  " + jsonObject);
+
+                    //Pattern here should be used
+                    
+                    if (type.equals("message_new")) {
+                        GsonBuilder builder = new GsonBuilder();
+                        Gson gson = builder.create();
+                        ModelMessageNew message = gson.fromJson(jsonObject, ModelMessageNew.class);
+                        int fromId = message.getInfo().getFromId();
+
+
+                       System.out.println("from_id: " + fromId);
+
+
+                        apiClient.messages().send(actor).message("Hello my friend!").userId(fromId).randomId(random.nextInt()).execute();
+
+
+                    }
+
                 }
                 lastTimeStamp = eventsResponse.getTs();
             } catch (LongPollServerKeyExpiredException e) {

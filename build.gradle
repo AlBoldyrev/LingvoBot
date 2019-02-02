@@ -20,4 +20,6 @@ dependencies {
     compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: log4jVersion
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4jVersion
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4jVersion
+    compile group: 'com.google.code.gson', name: 'gson', version: '1.7.2'
+    compileOnly('org.projectlombok:lombok:1.16.20')
 }
