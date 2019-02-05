@@ -25,7 +25,6 @@ public class Application {
             vk.groups().setLongPollSettings(groupActor).enabled(true).messageNew(true).execute();
         }
 
-        CallbackApiLongPollHandler handler = new CallbackApiLongPollHandler(vk, groupActor);
         BotRequestHandler botHandler = new BotRequestHandler(vk, groupActor);
         botHandler.run();
     }
