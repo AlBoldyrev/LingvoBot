@@ -21,5 +21,6 @@ dependencies {
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4jVersion
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4jVersion
     compile group: 'com.google.code.gson', name: 'gson', version: '1.7.2'
+    compile group: 'org.hibernate', name: 'hibernate-gradle-plugin', version: '5.4.1.Final'
     compileOnly('org.projectlombok:lombok:1.16.20')
 }

@@ -25,5 +25,6 @@ public class MessageNew implements Executor {
         int fromId = message.getInfo().getFromId();
         System.out.println("from_id: " + fromId);
         apiClient.messages().send(actor).message("Hello my friend!").userId(fromId).randomId(random.nextInt()).execute();
+
     }
 }
