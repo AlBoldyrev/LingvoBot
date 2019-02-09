@@ -30,6 +30,19 @@ public class User {
     @Column(name = "user_name")
     private String name;
 
+    @Column(name = "user_surname")
+    private String surname;
+
+    @Column(name = "user_message")
+    private String message;
+
+    @Column(name = "user_messagedate")
+    private Date messageDate;
+
+    @Column(name = "user_vkid")
+    private Integer user_VKID;
+
+
     public Integer getUserId() {
         return userId;
     }
@@ -69,13 +82,15 @@ public class User {
     public void setMessageDate(Date messageDate) {
         this.messageDate = messageDate;
     }
+    public Integer getUser_VKID() {
+        return user_VKID;
+    }
 
-    @Column(name = "user_surname")
-    private String surname;
+    public void setUser_VKID(Integer user_VKID) {
+        this.user_VKID = user_VKID;
+    }
 
-    @Column(name = "user_message")
-    private String message;
 
-    @Column(name = "user_messagedate")
-    private Date messageDate;
+
+
 }

@@ -13,5 +13,6 @@
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
         <mapping class="com.vk.entities.User"></mapping>
+        <mapping class="com.vk.entities.Message"></mapping>
     </session-factory>
 </hibernate-configuration>

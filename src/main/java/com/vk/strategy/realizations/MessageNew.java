@@ -7,7 +7,12 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
+import com.vk.entities.Message;
 import com.vk.model.message_new.ModelMessageNew;
+import com.vk.service.MessageService;
+import com.vk.service.UserService;
+import com.vk.service.impl.MessageServiceImpl;
+import com.vk.service.impl.UserServiceImpl;
 import com.vk.strategy.Executor;
 
 import java.util.Random;
@@ -15,6 +20,8 @@ import java.util.Random;
 public class MessageNew implements Executor {
 
     private final Random random = new Random();
+    UserService userService = new UserServiceImpl();
+    MessageService messageService = new MessageServiceImpl();
 
     public void execute(JsonObject jsonObject, VkApiClient apiClient, GroupActor actor) throws ClientException, ApiException {
         System.out.println("MESSAGE NEW");
@@ -23,8 +30,15 @@ public class MessageNew implements Executor {
         Gson gson = builder.create();
         ModelMessageNew message = gson.fromJson(jsonObject, ModelMessageNew.class);
         int fromId = message.getInfo().getFromId();
+        String messageValue = message.getInfo().getText();
         System.out.println("from_id: " + fromId);
-        apiClient.messages().send(actor).message("Hello my friend!").userId(fromId).randomId(random.nextInt()).execute();
+        System.out.println("message: " + messageValue);
+
+
+        System.out.println("Message saved.");
+
+
+//        apiClient.messages().send(actor).message("Hello my friend!").userId(fromId).randomId(random.nextInt()).execute();
 
     }
 }

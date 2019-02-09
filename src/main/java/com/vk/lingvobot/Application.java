@@ -3,8 +3,11 @@ package com.vk.lingvobot;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
+import com.vk.entities.Message;
 import com.vk.entities.User;
+import com.vk.service.MessageService;
 import com.vk.service.UserService;
+import com.vk.service.impl.MessageServiceImpl;
 import com.vk.service.impl.UserServiceImpl;
 
 import java.io.FileNotFoundException;
@@ -19,8 +22,15 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         UserService userService = new UserServiceImpl();
+        MessageService messageService = new MessageServiceImpl();
         User user = new User("Vasya", "Kaliteevsky");
         System.out.println(user.getName());
+
+        Message messageForSave = new Message();
+        messageForSave.setMessageId(1);
+        messageForSave.setUserId(1);
+        messageService.saveMessage(messageForSave);
+
         userService.saveUser(user);
 
         Properties properties = readProperties();
