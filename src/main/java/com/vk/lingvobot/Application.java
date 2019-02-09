@@ -3,6 +3,9 @@ package com.vk.lingvobot;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
+import com.vk.entities.User;
+import com.vk.service.UserService;
+import com.vk.service.impl.UserServiceImpl;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -14,6 +17,12 @@ public class Application {
     private static final String PROPERTIES_FILE = "config.properties";
 
     public static void main(String[] args) throws Exception {
+
+        UserService userService = new UserServiceImpl();
+        User user = new User("Vasya", "Kaliteevsky");
+        System.out.println(user.getName());
+        userService.saveUser(user);
+
         Properties properties = readProperties();
         GroupActor groupActor = createGroupActor(properties);
 
