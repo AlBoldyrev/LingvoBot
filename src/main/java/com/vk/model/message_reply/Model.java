@@ -10,5 +10,5 @@ class InnerObject {
     public String state;
     public Integer from_id;
     public Integer to_id;
-
+ 
 }

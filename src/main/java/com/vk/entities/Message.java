@@ -22,7 +22,7 @@ public class Message {
     private Integer userId;
 
 
-    
+
 
      public Integer getMessageId() {
         return messageId;
